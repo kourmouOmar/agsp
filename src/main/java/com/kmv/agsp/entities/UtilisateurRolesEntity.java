@@ -1,0 +1,55 @@
+/*
+ * Be careful, do not modify this class, it is generated automatically.
+ */
+
+package com.kmv.agsp.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+/**
+ * Persistent class for entity stored in table "utilisateur_roles"
+ */
+
+@Entity
+@Table(name = "utilisateur_roles")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class UtilisateurRolesEntity extends AbstractCommonEntity<Long> implements Cloneable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_utilisateur_roles", nullable = false)
+	private Long idUtilisateurRoles;
+
+	@ManyToOne
+	@JoinColumn(name = "id_roles", referencedColumnName = "id_role")
+	private RoleEntity roleEntity;
+
+	@ManyToOne
+	@JoinColumn(name = "id_utilisateur", referencedColumnName = "id_utilisateur")
+	private UtilisateurEntity utilisateurEntity;
+
+	@Override
+	public Long getId() {
+		return idUtilisateurRoles;
+	}
+
+}

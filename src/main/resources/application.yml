@@ -1,0 +1,45 @@
+## application informations
+info:
+  app:
+    name: AGSP service application
+    description:  AGSP-SERVICE
+    version: 1.0.0
+
+server:
+  port: 1010
+  servlet:
+    context-path: /agsp-api
+
+## bdd informations
+bdd_name: agsp_db
+bdd_host: 127.0.0.1            
+bdd_port: 3306
+
+token :
+  timeout: 86400  # == 24 hours !!
+  refresh: 300000 # == un mois !!
+## jwt secret property
+jwt:
+  secret: sigaiprojet    
+
+## Maria DB settings
+spring:
+  main:
+    allow-circular-references: 'true'
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://${bdd_host}:${bdd_port}/${bdd_name}?user=${spring.datasource.username}&password=${spring.datasource.password}
+    username: root
+    password: root
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        ddl-auto: validate
+      properties:
+        hibernate:
+          dialect:  org.hibernate.dialect.MariaDB10Dialect
+  devtools:
+     restart:
+        enabled: true
+
