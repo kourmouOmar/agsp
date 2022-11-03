@@ -4,8 +4,7 @@ import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.kmv.agsp.controllers.dto.MenusAuthoritiesDto;
-import com.kmv.agsp.controllers.dto.SigaiUtilisateurDto;
+import com.kmv.agsp.controllers.dto.AgspUtilisateurDto;
 import com.kmv.agsp.entities.UtilisateurEntity;
 
 /**
@@ -26,13 +25,7 @@ public interface IJwtService {
 	 */
 	UtilisateurEntity getUserByUsername(String username);
 
-	/**
-	 * get authorities for user
-	 * 
-	 * @param user
-	 * @return
-	 */
-	MenusAuthoritiesDto getAuthoritiesAndMenus(UtilisateurEntity user);
+
 
 	/**
 	 * Construct login response
@@ -42,8 +35,8 @@ public interface IJwtService {
 	 * @param authorities
 	 * @return
 	 */
-	SigaiUtilisateurDto constructResponse(UtilisateurEntity user, String username,
-			MenusAuthoritiesDto menusAuthoritiesDto);
+	AgspUtilisateurDto constructResponse(UtilisateurEntity user, String username,
+			String roles);
 
 	/**
 	 * construct user authorities

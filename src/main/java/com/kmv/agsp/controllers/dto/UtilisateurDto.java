@@ -48,11 +48,10 @@ public class UtilisateurDto implements Serializable {
 	@Size(max = 255)
 	private String password;
 
-	private RoleDto roleDto;
 	
 	private String role;
 	// Relations
-	private List<UtilisateurRolesDto> listOfUtilisateurRolesDto;
+	
 
 	// Relation Enum
 	public enum UtilisateurRelationsEnum {
@@ -78,7 +77,6 @@ public class UtilisateurDto implements Serializable {
 			dto.setPassword(entity.getPassword());
 			//dto.setRole(entity.getRole());
 			//dto.setRoleDto(RoleDto.entityToDto(entity.getListOfUtilisateurRoles().get(0).getRoleEntity()));
-			dto.setListOfUtilisateurRolesDto(UtilisateurRolesDto.entitiesToDtos(entity.getListOfUtilisateurRoles()));
 		}
 		return dto;
 	}
@@ -102,7 +100,6 @@ public class UtilisateurDto implements Serializable {
 			entity.setUsername(dto.getUsername());
 			entity.setPassword(dto.getPassword());
 			//entity.setRole(dto.getRole());
-			entity.setListOfUtilisateurRoles(UtilisateurRolesDto.dtosToEntities(dto.getListOfUtilisateurRolesDto()));
 		}
 
 		return entity;

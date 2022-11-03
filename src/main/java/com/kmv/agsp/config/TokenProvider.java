@@ -36,11 +36,14 @@ public class TokenProvider {
 	 */
 	public String createToken(String userName, Collection<? extends GrantedAuthority> authorities, Date now) {
 		/* get user authorities */
-		String userAuthorities = authorities.stream().map(GrantedAuthority::getAuthority)
-				.collect(Collectors.joining(","));
+		if(authorities != null) {
+			String userAuthorities = authorities.stream().map(GrantedAuthority::getAuthority)
+					.collect(Collectors.joining(","));
+		}
+		
 
 		/* create token */
-		return Jwts.builder().setSubject(userName).claim(AUTHORITIES_KEY, userAuthorities)
+		return Jwts.builder().setSubject(userName).claim(AUTHORITIES_KEY, userName)
 				.signWith(SignatureAlgorithm.HS512, jwtConfig.getSecret().getBytes()).setIssuedAt(now)
 				.setExpiration(getExpirationTime(now)).compact();
 	}

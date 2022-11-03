@@ -3,7 +3,6 @@
  */
 package com.kmv.agsp.services.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kmv.agsp.controllers.dto.UtilisateurDto;
-import com.kmv.agsp.controllers.dto.UtilisateurRolesDto;
 import com.kmv.agsp.entities.UtilisateurEntity;
 import com.kmv.agsp.repository.IUtilisateurRepository;
 import com.kmv.agsp.services.IUserService;
@@ -44,12 +42,7 @@ public class UserService implements IUserService {
 
 	@Override
 	public UtilisateurEntity addUser(UtilisateurDto userDto) {
-		List<UtilisateurRolesDto> listOfUtilisateurRolesDto = new ArrayList<>();
-		UtilisateurRolesDto p = new UtilisateurRolesDto();
-		p.setRoleDto(userDto.getRoleDto());
-		p.setUtilisateurDto(userDto);
-		listOfUtilisateurRolesDto.add(p);
-		userDto.setListOfUtilisateurRolesDto(listOfUtilisateurRolesDto);
+		
 
 		String pswd = bCryptPasswordEncoder.encode(userDto.getPassword());
 		userDto.setPassword(pswd);

@@ -1,7 +1,6 @@
 package com.kmv.agsp.controllers.dto;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,5 +29,5 @@ public class JwtResponseDto implements Serializable {
 	
 	private String role;
 	
-	private Set<MenuDto> menus;
+	//private Set<MenuDto> menus;
 }

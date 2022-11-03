@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kmv.agsp.config.SigaiResponse;
-import com.kmv.agsp.controllers.dto.MenusAuthoritiesDto;
 import com.kmv.agsp.entities.UtilisateurEntity;
 import com.kmv.agsp.services.IJwtService;
 
@@ -22,7 +21,7 @@ public class JwtAuthenticationController {
 	private IJwtService jwtService;
 
 	/**
-	 * Login and generate token & refresh token token v1
+	 * Login and generate token & refresh token token v1·
 	 * 
 	 * @return
 	 * @throws Exception
@@ -42,9 +41,8 @@ public class JwtAuthenticationController {
 		if (user == null) {
 			sigaiResponse = new SigaiResponse("pour cette user n'existe pas",HttpStatus.OK);
 		} else {
-			MenusAuthoritiesDto menusAuthoritiesDto = jwtService.getAuthoritiesAndMenus(user);
 
-			sigaiResponse = new SigaiResponse(jwtService.constructResponse(user, username, menusAuthoritiesDto),
+			sigaiResponse = new SigaiResponse(jwtService.constructResponse(user, username, null),
 					HttpStatus.OK);
 		}
 		return sigaiResponse;
