@@ -39,8 +39,7 @@ public class ClientEntity extends AbstractCommonEntity<Long>  implements Cloneab
 	@Column(name = "id_client", nullable = false)
     private Long idClient ;
 
-    @Column(name="a", nullable=false, length=255)
-    private String a ;
+  
     @Column(name="designation", nullable=false, length=255)
     private String designation ;
     @Column(name="adresse", length=255)

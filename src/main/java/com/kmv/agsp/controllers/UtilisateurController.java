@@ -24,40 +24,40 @@ import com.kmv.agsp.util.Constants;
  * @version : 1.0
  */
 @RestController
-@RequestMapping("Utilisateur")
+@RequestMapping("/utilisateur")
 public class UtilisateurController {
 
 	@Autowired
-	private UtilisateurService UtilisateurService;
+	private UtilisateurService utilisateurService;
 
 	@GetMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse getAllUtilisateurs() {
 		/* get all Utilisateur */
-		return new SigaiResponse(UtilisateurService.getAllUtilisateurs(), HttpStatus.OK);
+		return new SigaiResponse(UtilisateurDto.entitiesToDtos(utilisateurService.getAllUtilisateurs()), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/v0/{id}", headers = Constants.HEADERS)
 	public SigaiResponse getUtilisateurById(@PathVariable Long id) {
 		/* return Utilisateur by id */
-		return new SigaiResponse(UtilisateurService.getUtilisateurById(id), HttpStatus.OK);
+		return new SigaiResponse(UtilisateurDto.entityToDto(utilisateurService.getUtilisateurById(id)), HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/v0/{id}", headers = Constants.HEADERS)
-	public SigaiResponse addUtilisateur(@RequestBody UtilisateurDto UtilisateurDto) {
+	@PostMapping(value = "/v0", headers = Constants.HEADERS)
+	public SigaiResponse addUtilisateur(@RequestBody UtilisateurDto utilisateurDto) {
 		/* add Utilisateur */
-		return new SigaiResponse(UtilisateurService.addUtilisateur(UtilisateurDto), HttpStatus.OK);
+		return new SigaiResponse(utilisateurService.addUtilisateur(utilisateurDto), HttpStatus.OK);
 	}
 
-	@PutMapping(value = "/v0/{id}", headers = Constants.HEADERS)
-	public SigaiResponse updateUtilisateur(@RequestBody UtilisateurDto UtilisateurDto) {
+	@PutMapping(value = "/v0", headers = Constants.HEADERS)
+	public SigaiResponse updateUtilisateur(@RequestBody UtilisateurDto utilisateurDto) {
 		/* update Utilisateur */
-		return new SigaiResponse(UtilisateurService.updateUtilisateur(UtilisateurDto), HttpStatus.OK);
+		return new SigaiResponse(utilisateurService.updateUtilisateur(utilisateurDto), HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/v0/{id}", headers = Constants.HEADERS)
 	public SigaiResponse deleteUtilisateur(@PathVariable Long id) {
 		/* delete Utilisateur */
-		UtilisateurService.deleteUtilisateur(id);
+		utilisateurService.deleteUtilisateur(id);
 		return new SigaiResponse(HttpStatus.OK);
 	}
 

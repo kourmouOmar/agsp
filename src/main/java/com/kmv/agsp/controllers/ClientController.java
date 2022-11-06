@@ -43,13 +43,13 @@ public class ClientController {
 		return new SigaiResponse(clientService.getClientById(id), HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/v0/{id}", headers = Constants.HEADERS)
+	@PostMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse addClient(@RequestBody ClientDto ClientDto) {
 		/* add Client */
 		return new SigaiResponse(clientService.addClient(ClientDto), HttpStatus.OK);
 	}
 
-	@PutMapping(value = "/v0/{id}", headers = Constants.HEADERS)
+	@PutMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse updateClient(@RequestBody ClientDto ClientDto) {
 		/* update Client */
 		return new SigaiResponse(clientService.updateClient(ClientDto), HttpStatus.OK);

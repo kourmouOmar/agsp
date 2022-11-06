@@ -49,7 +49,10 @@ public class UtilisateurDto implements Serializable {
 	private String password;
 
 	
-	private String role;
+	private String roles;
+	
+	private Boolean active;
+	private Boolean bloque;
 	// Relations
 	
 
@@ -75,8 +78,9 @@ public class UtilisateurDto implements Serializable {
 			dto.setCin(entity.getCin());
 			dto.setUsername(entity.getUsername());
 			dto.setPassword(entity.getPassword());
-			//dto.setRole(entity.getRole());
-			//dto.setRoleDto(RoleDto.entityToDto(entity.getListOfUtilisateurRoles().get(0).getRoleEntity()));
+			dto.setRoles(entity.getRoles());
+			dto.setActive(entity.getActive());
+			dto.setBloque(entity.getBloque());
 		}
 		return dto;
 	}
@@ -99,7 +103,9 @@ public class UtilisateurDto implements Serializable {
 			entity.setCin(dto.getCin());
 			entity.setUsername(dto.getUsername());
 			entity.setPassword(dto.getPassword());
-			//entity.setRole(dto.getRole());
+			entity.setRoles(dto.getRoles());
+			entity.setActive(dto.getActive());
+			entity.setBloque(dto.getBloque());
 		}
 
 		return entity;

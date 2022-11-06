@@ -31,8 +31,7 @@ private static final long serialVersionUID = 1L;
 
     private Long idClient     ;
     @NotNull
-    @Size(max=255)
-    private String a;
+
     @NotNull
     @Size(max=255)
     private String designation;
@@ -70,7 +69,6 @@ private static final long serialVersionUID = 1L;
 		if(entity != null){
 			dto = new ClientDto();
         	dto.setIdClient(entity.getIdClient());
-        	dto.setA(entity.getA());  
         	dto.setDesignation(entity.getDesignation());  
         	dto.setAdresse(entity.getAdresse());  
         	dto.setVille(entity.getVille());  
@@ -92,7 +90,6 @@ private static final long serialVersionUID = 1L;
 		if(dto != null){
 			entity = new ClientEntity();
         	entity.setIdClient(dto.getIdClient()) ;
-        	entity.setA(dto.getA());   
         	entity.setDesignation(dto.getDesignation());   
         	entity.setAdresse(dto.getAdresse());   
         	entity.setVille(dto.getVille());   

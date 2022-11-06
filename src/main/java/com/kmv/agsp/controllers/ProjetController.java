@@ -36,19 +36,19 @@ public class ProjetController {
 		return new SigaiResponse(ProjetService.getAllProjets(), HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/v0/{id}", headers = Constants.HEADERS)
+	@GetMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse getProjetById(@PathVariable Long id) {
 		/* return Projet by id */
 		return new SigaiResponse(ProjetService.getProjetById(id), HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/v0/{id}", headers = Constants.HEADERS)
+	@PostMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse addProjet(@RequestBody ProjetDto ProjetDto) {
 		/* add Projet */
 		return new SigaiResponse(ProjetService.addProjet(ProjetDto), HttpStatus.OK);
 	}
 
-	@PutMapping(value = "/v0/{id}", headers = Constants.HEADERS)
+	@PutMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse updateProjet(@RequestBody ProjetDto ProjetDto) {
 		/* update Projet */
 		return new SigaiResponse(ProjetService.updateProjet(ProjetDto), HttpStatus.OK);

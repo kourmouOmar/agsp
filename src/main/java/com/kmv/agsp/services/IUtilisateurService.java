@@ -4,27 +4,20 @@
 package com.kmv.agsp.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.kmv.agsp.controllers.dto.UtilisateurDto;
 import com.kmv.agsp.entities.UtilisateurEntity;
 
-/**
- * Spring service "Utilisateur"
- * 
- * @author : illass elbarhoumi
- * @creation : 08/11/20
- * @version : 1.0
- */
+
 public interface IUtilisateurService{
 
-/**
+    /**
 	 * Get Utilisateur by Id
 	 * 
 	 * @param idUtilisateur
 	 * @return UtilisateurEntity
 	 */
-	Optional<UtilisateurEntity> getUtilisateurById(Long idUtilisateur);
+	UtilisateurEntity getUtilisateurById(Long idUtilisateur);
 
 	/**
 	 * get all Utilisateur

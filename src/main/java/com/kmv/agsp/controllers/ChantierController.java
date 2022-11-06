@@ -37,13 +37,13 @@ public class ChantierController {
 		return new SigaiResponse(chantierService.getAllChantiers(), HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/v0/{id}", headers = Constants.HEADERS)
+	@GetMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse getChantierById(@PathVariable Long id) {
 		/* return Chantier by id */
 		return new SigaiResponse(chantierService.getChantierById(id), HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/v0/{id}", headers = Constants.HEADERS)
+	@PostMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse addChantier(@RequestBody ChantierDto ChantierDto) {
 		/* add Chantier */
 		return new SigaiResponse(chantierService.addChantier(ChantierDto), HttpStatus.OK);
