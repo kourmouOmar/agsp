@@ -20,44 +20,44 @@ import com.kmv.agsp.util.Constants;
  * Spring controller "Projet"
  * 
  * @author : kourmou omar
- * @creation : 03/11/22
+ * @creation : 03/03/22
  * @version : 1.0
  */
 @RestController
-@RequestMapping("Projet")
+@RequestMapping("/projet")
 public class ProjetController {
 
 	@Autowired
-	private ProjetService ProjetService;
+	private ProjetService projetService;
 
 	@GetMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse getAllProjets() {
 		/* get all Projet */
-		return new SigaiResponse(ProjetService.getAllProjets(), HttpStatus.OK);
+		return new SigaiResponse(ProjetDto.entitiesToDtos(projetService.getAllProjets()), HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/v0", headers = Constants.HEADERS)
+	@GetMapping(value = "/v0/{id}", headers = Constants.HEADERS)
 	public SigaiResponse getProjetById(@PathVariable Long id) {
 		/* return Projet by id */
-		return new SigaiResponse(ProjetService.getProjetById(id), HttpStatus.OK);
+		return new SigaiResponse(projetService.getProjetById(id), HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse addProjet(@RequestBody ProjetDto ProjetDto) {
 		/* add Projet */
-		return new SigaiResponse(ProjetService.addProjet(ProjetDto), HttpStatus.OK);
+		return new SigaiResponse(ProjetDto.entityToDto(projetService.addProjet(ProjetDto)), HttpStatus.OK);
 	}
 
 	@PutMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse updateProjet(@RequestBody ProjetDto ProjetDto) {
 		/* update Projet */
-		return new SigaiResponse(ProjetService.updateProjet(ProjetDto), HttpStatus.OK);
+		return new SigaiResponse(ProjetDto.entityToDto(projetService.updateProjet(ProjetDto)), HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/v0/{id}", headers = Constants.HEADERS)
 	public SigaiResponse deleteProjet(@PathVariable Long id) {
 		/* delete Projet */
-		ProjetService.deleteProjet(id);
+		projetService.deleteProjet(id);
 		return new SigaiResponse(HttpStatus.OK);
 	}
 

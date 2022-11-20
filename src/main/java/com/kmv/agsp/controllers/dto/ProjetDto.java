@@ -1,14 +1,20 @@
 package com.kmv.agsp.controllers.dto;
 
 
+
+
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kmv.agsp.entities.ProjetEntity;
 import com.kmv.agsp.util.Functions;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,11 +44,15 @@ private static final long serialVersionUID = 1L;
     @Size(max=255)
     private String nomCompletResponsable;
 	// Relations
+    private BureauEtudeDto bureauEtudeDto;
+    private BureauControleDto bureauControleDto;
     private List<ChantierDto> listOfChantierDto;  
     private ClientDto clientDto;
 
 	// Relation Enum
 	public enum ProjetRelationsEnum {
+		bureauEtude,
+		bureauControle,
 		listOfChantier,
     	client; 
 	}
@@ -61,8 +71,18 @@ private static final long serialVersionUID = 1L;
         	dto.setActive(entity.getActive());  
         	dto.setEmailResponsable(entity.getEmailResponsable());  
         	dto.setTelephoneResponsable(entity.getTelephoneResponsable());  
-        	dto.setNomCompletResponsable(entity.getNomCompletResponsable());  
+        	dto.setNomCompletResponsable(entity.getNomCompletResponsable());
+        	if(entity.getClient() !=null) {
+        		dto.setClientDto(ClientDto.entityToDto(entity.getClient()));
+        	}
+        	if(entity.getBureauControle() != null) {
+        		dto.setBureauControleDto(BureauControleDto.entityToDto(entity.getBureauControle()));
+        	}
+        	if(entity.getBureauEtude() != null) {
+        		dto.setBureauEtudeDto(BureauEtudeDto.entityToDto(entity.getBureauEtude()));
+        	}
 		}
+		
 		return  dto;
     }
 	/**
@@ -80,10 +100,21 @@ private static final long serialVersionUID = 1L;
         	entity.setEmailResponsable(dto.getEmailResponsable());   
         	entity.setTelephoneResponsable(dto.getTelephoneResponsable());   
         	entity.setNomCompletResponsable(dto.getNomCompletResponsable());   
+        	if(dto.getBureauEtudeDto() != null) {
+        		entity.setBureauEtude(BureauEtudeDto.dtoToEntity(dto.getBureauEtudeDto()));
+        	}
+        	if(dto.getBureauControleDto() != null) {
+        		entity.setBureauControle(BureauControleDto.dtoToEntity(dto.getBureauControleDto()));
+        	}
+        	if(dto.getClientDto() != null) {
+        		entity.setClient(ClientDto.dtoToEntity(dto.getClientDto()));
+        	}
+        		
 		}
 		
 		return  entity;
     }
+    
     /**
      * Convert list ProjetDto -> list ProjetEntity
      * @param List<ProjetDto>
@@ -97,6 +128,7 @@ private static final long serialVersionUID = 1L;
 		}
         return list;
     }
+    
     /**
      * Convert list ProjetEntity -> list ProjetDto
      * @param List<ProjetEntity>

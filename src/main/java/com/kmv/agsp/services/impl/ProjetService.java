@@ -1,6 +1,5 @@
 package com.kmv.agsp.services.impl;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class ProjetService implements IProjetService {
 	
 	@Override
 	public ProjetEntity getProjetById(Long idProjet) {
-		return projetRespository.getProjetBydId(idProjet);
+		return projetRespository.getOne(idProjet);
 	}
 
 	@Override

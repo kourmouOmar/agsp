@@ -1,6 +1,5 @@
 package com.kmv.agsp.services;
 
-
 import java.util.List;
 
 import com.kmv.agsp.controllers.dto.ProjetDto;
@@ -8,7 +7,7 @@ import com.kmv.agsp.entities.ProjetEntity;
 
 public interface IProjetService{
 
-	/**
+     /**
 	 * Get Projet by Id
 	 * 
 	 * @param idProjet

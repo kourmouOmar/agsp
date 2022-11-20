@@ -1,6 +1,5 @@
 package com.kmv.agsp.services.impl;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class ChantierService implements IChantierService {
 	
 	@Override
 	public ChantierEntity getChantierById(Long idChantier) {
-		return chantierRespository.getChantierBydId(idChantier);
+		return chantierRespository.getOne(idChantier);
 	}
 
 	@Override

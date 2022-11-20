@@ -34,7 +34,7 @@ public class ClientController {
 	@GetMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse getAllClients() {
 		/* get all Client */
-		return new SigaiResponse(clientService.getAllClients(), HttpStatus.OK);
+		return new SigaiResponse(ClientDto.entitiesToDtos(clientService.getAllClients()), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/v0/{id}", headers = Constants.HEADERS)
@@ -52,7 +52,7 @@ public class ClientController {
 	@PutMapping(value = "/v0", headers = Constants.HEADERS)
 	public SigaiResponse updateClient(@RequestBody ClientDto ClientDto) {
 		/* update Client */
-		return new SigaiResponse(clientService.updateClient(ClientDto), HttpStatus.OK);
+		return new SigaiResponse(ClientDto.entityToDto(clientService.updateClient(ClientDto)), HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/v0/{id}", headers = Constants.HEADERS)

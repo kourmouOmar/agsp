@@ -5,14 +5,9 @@ import java.util.List;
 import com.kmv.agsp.controllers.dto.ChantierDto;
 import com.kmv.agsp.entities.ChantierEntity;
 
-/**
- * 
- * @author omarkourmou1
- *
- */
 public interface IChantierService{
 
-/**
+    /**
 	 * Get Chantier by Id
 	 * 
 	 * @param idChantier

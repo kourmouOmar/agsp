@@ -1,6 +1,7 @@
 package com.kmv.agsp.entities;
 
 
+
  
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +45,19 @@ public class ChantierEntity extends AbstractCommonEntity<Long>  implements Clone
     private String designation ;
     @Column(name="description", length=255)
     private String description ;
-	
+				
+    @ManyToOne
+    @JoinColumn(name="id_fiche_n2", referencedColumnName="id_fiche_n2")
+    private FicheN2Entity ficheN2;
+
+    @ManyToOne
+    @JoinColumn(name="id_fiche_n3", referencedColumnName="id_fiche_n3")
+    private FicheN3Entity ficheN3;
+
+    @ManyToOne
+    @JoinColumn(name="id_fiche_n1", referencedColumnName="id_fiche_n1")
+    private FicheN1Entity ficheN1;
+
     @ManyToOne
     @JoinColumn(name="id_projet", referencedColumnName="id_projet")
     private ProjetEntity projet;

@@ -12,52 +12,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kmv.agsp.config.SigaiResponse;
-import com.kmv.agsp.controllers.dto.ChantierDto;
-import com.kmv.agsp.services.impl.ChantierService;
+import com.kmv.agsp.controllers.dto.FicheN2Dto;
+import com.kmv.agsp.services.impl.FicheN2Service;
 import com.kmv.agsp.util.Constants;
 
 /**
- * Spring controller "Chantier"
+ * Spring controller "FicheN2"
  * 
  * @author : kourmou omar
  * @creation : 03/03/22
  * @version : 1.0
  */
 @RestController
-@RequestMapping("/chantier")
-public class ChantierController {
+@RequestMapping("/ficheN2")
+public class FicheN2Controller {
 
 	@Autowired
-	private ChantierService ChantierService;
+	private FicheN2Service FicheN2Service;
 
 	@GetMapping(value = "/v0", headers = Constants.HEADERS)
-	public SigaiResponse getAllChantiers() {
-		/* get all Chantier */
-		return new SigaiResponse(ChantierService.getAllChantiers(), HttpStatus.OK);
+	public SigaiResponse getAllFicheN2s() {
+		/* get all FicheN2 */
+		return new SigaiResponse(FicheN2Service.getAllFicheN2s(), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/v0/{id}", headers = Constants.HEADERS)
-	public SigaiResponse getChantierById(@PathVariable Long id) {
-		/* return Chantier by id */
-		return new SigaiResponse(ChantierService.getChantierById(id), HttpStatus.OK);
+	public SigaiResponse getFicheN2ById(@PathVariable Long id) {
+		/* return FicheN2 by id */
+		return new SigaiResponse(FicheN2Service.getFicheN2ById(id), HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/v0", headers = Constants.HEADERS)
-	public SigaiResponse addChantier(@RequestBody ChantierDto ChantierDto) {
-		/* add Chantier */
-		return new SigaiResponse(ChantierService.addChantier(ChantierDto), HttpStatus.OK);
+	public SigaiResponse addFicheN2(@RequestBody FicheN2Dto FicheN2Dto) {
+		/* add FicheN2 */
+		return new SigaiResponse(FicheN2Service.addFicheN2(FicheN2Dto), HttpStatus.OK);
 	}
 
 	@PutMapping(value = "/v0", headers = Constants.HEADERS)
-	public SigaiResponse updateChantier(@RequestBody ChantierDto ChantierDto) {
-		/* update Chantier */
-		return new SigaiResponse(ChantierService.updateChantier(ChantierDto), HttpStatus.OK);
+	public SigaiResponse updateFicheN2(@RequestBody FicheN2Dto FicheN2Dto) {
+		/* update FicheN2 */
+		return new SigaiResponse(FicheN2Service.updateFicheN2(FicheN2Dto), HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/v0/{id}", headers = Constants.HEADERS)
-	public SigaiResponse deleteChantier(@PathVariable Long id) {
-		/* delete Chantier */
-		ChantierService.deleteChantier(id);
+	public SigaiResponse deleteFicheN2(@PathVariable Long id) {
+		/* delete FicheN2 */
+		FicheN2Service.deleteFicheN2(id);
 		return new SigaiResponse(HttpStatus.OK);
 	}
 

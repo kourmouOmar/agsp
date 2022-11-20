@@ -4,7 +4,6 @@ package com.kmv.agsp.controllers.dto;
 
 
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +39,16 @@ private static final long serialVersionUID = 1L;
     @Size(max=255)
     private String description;
 	// Relations
+    private FicheN2Dto ficheN2Dto;
+    private FicheN3Dto ficheN3Dto;
+    private FicheN1Dto ficheN1Dto;
     private ProjetDto projetDto;
 
 	// Relation Enum
 	public enum ChantierRelationsEnum {
+		ficheN2,
+		ficheN3,
+		ficheN1,
     	projet; 
 	}
    
